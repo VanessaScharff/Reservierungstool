@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <!-- js-code für Date-Picker-->
+    <script>
+      $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+          format: 'dd/mm/yyyy',
+          container: container,
+          todayHighlight: true,
+          autoclose: true,
+          language: 'de',
+        };
+        date_input.datepicker(options);
+      })
+    </script>
+
+    <title>Reservierungstool</title>
+  </head>
+  <body style="padding-bottom: 70px;">
+    <!-- Header mit Navbar mit collapse-funktion -->
+    <header class="p-3 text-white" style="background-color: #003E51;"><!--HS-KL-Farbe-->
+      <nav class="navbar navbar-expand-xl navbar-dark">
+        <div class="container">
+          <!-- Links collapsed unter Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Link zur HS-KL -->
+          <a href="https://www.hs-kl.de/" class="navbar-brand ps-2">HS-KL</a>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <!-- Weitere Links -->
+            <div class="navbar-nav ms-auto">
+              <a class="nav-item nav-link active" aria-current="page" href="#">Reservierungstool</a>
+              <a class="nav-item nav-link" href="aufzeichnung.html">Aufzeichnung</a>
+              <a class="nav-item nav-link" href="ausleihe.html">Ausleihe</a>
+              <a class="nav-item nav-link" href="camtasia.html">Camtasia</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      </header>
+    <div class="container-md">
+      <!-- Überschrift mit Padding links und oben -->
+      <h4 class="mb-3 ps-2 pt-4">Reservierungstool</h4>
+
+      <!-- Foto-carousel -->
+      <div id="hsklfotos" class="carousel slide pb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Erstes angezeigtes Foto, width 100% -->
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://images.pexels.com/photos/1870438/pexels-photo-1870438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Raum xy, Campus ZW">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Raum xy, Campus KL">
+          </div>
+        </div>
+      </div>
+
+      <!-- Formular -->
+      <form>
+        <!-- Reihe mit padding bottom-->
+        <div class="row">
+          <!-- Spalte Vorname, bei kleinen Geräten nur ein Feld-->
+          <div class="col-xs-1 col-md-6 pb-2">
+            <label for="vorname" class="form-label">Vorname</label>
+            <input type="text" class="form-control" id="vorname" placeholder="Max" required><!-- Pflichtfeld -->
+          </div>
+
+          <!-- Spalte Nachname-->
+          <div class="col-xs-1 col-md-6 pb-2">
+            <label for="nachname" class="form-label">Nachname</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Mustermann" required><!-- Pflichtfeld -->
+          </div>
+        </div>
+
+        <!-- Reihe mit Email und Standort -->
+        <div class="row">
+          <!-- Spalte Email, bei kleinen Geräten nur ein Feld -->
+          <div class="col-xs-1 col-md-6 pb-2">
+            <label for="email" class="form-label">E-mail-Adresse</label>
+            <input type="email" class="form-control" id="email" placeholder="max.mustermann@hs-kl.de" required><!-- Pflichtfeld -->
+          </div>
+
+          <!-- Spalte Standort mit Radiobuttons (Standorte) mit padding bottom -->
+          <div class="col pb-2">
+            <label for="standort" class="form-label">Standort</label>
+            <div>
+              <!-- Ein Radiobutton als Pflichtfeld -->
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="flexRadio" id="kl" required>
+                <label class="form-check-label" for="kl">Kaiserslautern</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="flexRadio" id="ps">
+                <label class="form-check-label" for="ps">Pirmasens</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="flexRadio" id="zw">
+                <label class="form-check-label" for="zw">Zweibrücken</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Reihe mit Raumnummer und Datum -->
+        <div class="row">
+          <!-- Spalte Raumnummer-->
+          <div class="col col-3 col-xs-3 pb-2">
+            <label for="raumnummer" class="form-label">Raumnummer</label>
+            <input type="text" class="form-control" id="raumnummer" placeholder="A001" required><!-- Pflichtfeld -->
+          </div>
+
+          <!-- Spalte Datum -->
+          <div class="col col-md-3 col-xs-1 form-group pb-2"> 
+            <label class="form-label" for="date">Datum</label>
+            <input class="form-control" id="date" name="date" placeholder="TT/MM/JJJJ" type="text"/><!-- Pflichtfeld -->
+          </div>
+
+        <!-- Textfeld für Anmerkungen -->
+        <div class="row">
+          <div class="pb-4">
+            <label for="anmerkungen" class="form-label">Anmerkungen</label>
+            <textarea class="form-control" id="anmerkungen" row="3" placeholder="Anmerkungen"></textarea>
+          </div>
+        </div>
+
+        <!-- Buttons rechts-->
+          <div class="d-grid gap-2 d-md-flex pb-2 justify-content-md-end">
+            <button class="btn btn-secondary" type="reset" value="Zuruecksetzen">Zurücksetzen</button>
+            <button class="btn btn-primary" style="background-color: #003E51;" type="submit" value="Senden">Senden</button><!--Farbgebung der Hochschule-->
+          </div>
+
+      </form>
+    </div>
+  </div>
+  <!-- sticky-Footer mit Link zur Website -->
+  <footer class="footer fixed-bottom">
+    <div class="text-center p-4" style="background-color: #D9D9D6;">
+      © 2021 Copyright:
+      <a class="text-reset" href="https://www.hs-kl.de/">hs-kl.de</a>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  </body>
+</html>
